@@ -1,0 +1,121 @@
+@model HealthWebApp2._0.Models.Person.PersonEditModel
+@using HealthWebApp2._0.Data.EntityModel
+
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-controller="Person" asp-action="Edit" method="post" >
+    <div class="form-horizontal">
+        <h4>Edit Patient Profile</h4>
+        <hr />
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="NameTitleId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="NameTitleId" class="form-control" asp-items="@ViewBag.NameTitleID">
+                    <option value="NameTitleId"></option>
+                </select>
+                <span asp-validation-for="NameTitleId" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="MiddleName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="MiddleName" class="form-control" />
+                <span asp-validation-for="MiddleName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ExtensionName" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="ExtensionName" class="form-control" asp-items="Html.GetEnumSelectList<EnumExtensionName>()"></select>
+                <span asp-validation-for="ExtensionName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="DateOfBirth" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Sex" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Sex" class="form-control" asp-items="Html.GetEnumSelectList<EnumGender>()"></select>
+                <span asp-validation-for="Sex" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="CivilStatus" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CivilStatus" class="form-control" asp-items="Html.GetEnumSelectList<EnumCivilStatus>()"></select>
+                <span asp-validation-for="CivilStatus" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ContactNumber" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmailAddress" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                <input asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="WorkId" class="col-md-2 control-label">Occupation</label>
+            <div class="col-md-4">
+                <select asp-for="WorkId" class="form-control" asp-items="@ViewBag.WorkID">
+                    <option value="">-- Select Work --</option>
+                </select>
+                <span asp-validation-for="WorkId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ReligionId" class="col-md-2 control-label"></label>
+            <div class="col-md-4">
+                <select asp-for="ReligionId" class="form-control" asp-items="@ViewBag.ReligionID">
+                    <option value="">-- Select Religion --</option>
+                </select>
+            </div>
+            <span asp-validation-for="ReligionId" class="text-danger" />
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

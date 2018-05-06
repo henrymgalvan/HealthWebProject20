@@ -1,0 +1,43 @@
+﻿@model HealthWebApp2._0.Models.Person.PersonDetailModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+
+        <div class="clearfix">
+            <h3 class="text-muted">Detail of @Model.FullName</h3>
+        </div>
+
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-4">
+                    <div>First Name : @Model.FirstName</div>
+                    <div>Middle Name : @Model.MiddleName </div>
+                    <div>Last Name : @Model.LastName </div>
+                    <div>Birthdate : @Model.DateOfBirth </div>
+                    <div>Gender : @Model.Sex </div>
+                    <div>Civil Status : @Model.CivilStatus</div>
+                </div>
+                <div class="col-md-4">
+                    <div>Contact # : @Model.ContactNumber </div>
+                    <div>Email Address : @Model.EmailAddress</div>
+                    <div>PhilHealth : @Model.PhilHealthID</div>
+                    @*<div>Father : @model.Father</div>
+                        <div>Mother : @model.Mother</div>*@
+                </div>
+                <div class="col-md-4">
+                    <div>Address : @Model.Address</div>
+                    <div>Barangay : @Model.Barangay</div>
+                    <div>City/Municipality : @Model.City</div>
+                    <div>Province : @Model.Province</div>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <a asp-controller="Person" asp-action="Index">Back to Index</a>
+        </div>
+    </div>
+}
