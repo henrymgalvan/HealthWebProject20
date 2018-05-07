@@ -150,22 +150,48 @@ namespace HealthWebApp2._0.Controllers
         }
 
         [HttpGet]
-        public IActionResult Delete(long? Id)
+        public async Task<IActionResult> Delete(long? Id, bool? saveChangesError = false)
         {
             if (Id == null)
             {
                 return NotFound();
             }
-            Person person = _person.Get((long)Id);
-            if (person != null)
+            Person person = await _person
+                .AsNoTracking()
+                .SingleOrDefaultAsync(m => m.Id == Id);
+            if (person == null)
             {
-
-                ViewBag["FullName"] = person.FirstName + " " + person.MiddleName + " " + person.LastName;
-                return View(ViewBag);
+                return NotFound();
             }
-            else
+            
+            if (saveChangesError.GetValueOrDefault())
             {
-                return View("ErrorDelete");
+                ViewData["ErrorMessage"] = "Delete failed. Try again, and if the problem persists " +
+                "see your system administrator.";
+            }
+            
+            return View(person);
+        }
+        
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public Async Task<IActionResult> DeleteConfirmed(int Id)
+        {
+            var person = await _person.AsNoTracking()
+                            .SingleOrDefaultAsync(m => m.Id == Id);
+            if (person == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            
+            try
+            {
+                _person.Delete(person);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (DbUpdateException ex)
+            {
+                return RedirectToAction(nameof(Delete), new {Id = Id, saveChangesError = true });
             }
         }
 
