@@ -50,8 +50,11 @@
                         <td>@patient.PhilHealthID</td>
                         <td>@patient.Father</td>
                         <td>@patient.Mother</td>
-                        <td id="PatientIcon"><a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a></td>
-                        <td id="PatientIcon"><a asp-controller="Person" asp-action="Details" asp-route-id="@patient.Id"> Details</a></td>
+                        <td id="PatientIcon">
+                            <a asp-controller="Person" asp-action="Edit" asp-route-id="@patient.Id"> Edit</a>
+                            <a asp-controller="Person" asp-action="Details" asp-route-id="@patient.Id"> Details</a>
+                            <a asp-controller="Person" asp-action="Delete" asp-route-id="@patient.Id"> Delete</a>                        
+                        </td>
 
                     </tr>
                 }

@@ -8,6 +8,7 @@ using HealthWebApp2._0.Data.Interface;
 using HealthWebApp2._0.Models.Person;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace HealthWebApp2._0.Controllers
 {
@@ -150,15 +151,13 @@ namespace HealthWebApp2._0.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Delete(long? Id, bool? saveChangesError = false)
+        public IActionResult Delete(long? Id, bool? saveChangesError = false)
         {
             if (Id == null)
             {
                 return NotFound();
             }
-            Person person = await _person
-                .AsNoTracking()
-                .SingleOrDefaultAsync(m => m.Id == Id);
+            Person person = _person.Get((long)Id);
             if (person == null)
             {
                 return NotFound();
@@ -169,16 +168,15 @@ namespace HealthWebApp2._0.Controllers
                 ViewData["ErrorMessage"] = "Delete failed. Try again, and if the problem persists " +
                 "see your system administrator.";
             }
-            
+            ViewBag.FullName = person.FullName;
             return View(person);
         }
         
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public Async Task<IActionResult> DeleteConfirmed(int Id)
+        public IActionResult DeleteConfirmed(long Id)
         {
-            var person = await _person.AsNoTracking()
-                            .SingleOrDefaultAsync(m => m.Id == Id);
+            var person = _person.Get(Id);
             if (person == null)
             {
                 return RedirectToAction(nameof(Index));
@@ -186,12 +184,12 @@ namespace HealthWebApp2._0.Controllers
             
             try
             {
-                _person.Delete(person);
+                _person.Delete(Id);
                 return RedirectToAction(nameof(Index));
             }
             catch (DbUpdateException ex)
             {
-                return RedirectToAction(nameof(Delete), new {Id = Id, saveChangesError = true });
+                return RedirectToAction(nameof(Delete), new {Id, saveChangesError = true });
             }
         }
 

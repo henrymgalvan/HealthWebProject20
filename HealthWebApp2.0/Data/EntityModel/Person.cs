@@ -78,5 +78,10 @@ namespace HealthWebApp2._0.Data.EntityModel
         public long EmployeeId { get; set; }    //Updated by Last Employee
 
         public string FullName => (FirstName + " " + MiddleName + " " + LastName + " " + ExtensionName);
+
+        //Emergency Contact Person
+        public string EmergencyContactPerson { get; set; }
+        public string EmergencyContactNumber { get; set; }
+        public string RelationshipToPatient { get; set; }
     }
 }
