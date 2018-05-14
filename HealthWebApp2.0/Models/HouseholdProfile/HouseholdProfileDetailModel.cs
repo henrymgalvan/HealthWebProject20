@@ -1,8 +1,5 @@
-﻿using HealthWebApp2._0.Models.HouseholdMember;
-using System;
+﻿using HealthWebApp2._0.Data.EntityModel.Household;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HealthWebApp2._0.Models.HouseholdProfile
 {
@@ -13,6 +10,6 @@ namespace HealthWebApp2._0.Models.HouseholdProfile
         public string Address { get; set; }
         public string Barangay { get; set; }
         public string Note { get; set; }
-        public IEnumerable<HouseholdMemberDetailModel> HouseholdMembers { get; set; }
+        public IEnumerable<HouseholdMember> HouseHolds { get; set; }
     }
 }

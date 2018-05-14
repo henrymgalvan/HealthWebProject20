@@ -149,7 +149,7 @@ namespace HealthWebApp2._0.Migrations
                     b.ToTable("Education");
                 });
 
-            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", b =>
+            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", b =>
                 {
                     b.Property<long>("PersonId");
 
@@ -161,7 +161,7 @@ namespace HealthWebApp2._0.Migrations
 
                     b.HasIndex("HouseholdProfileId");
 
-                    b.ToTable("HouseholdMember");
+                    b.ToTable("HouseholdProfileDetailMOdel");
                 });
 
             modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfile", b =>
@@ -525,7 +525,7 @@ namespace HealthWebApp2._0.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", b =>
+            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", b =>
                 {
                     b.HasOne("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfile", "HouseholdProfile")
                         .WithMany("HouseholdMembers")
@@ -533,8 +533,8 @@ namespace HealthWebApp2._0.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HealthWebApp2._0.Data.EntityModel.Person", "Person")
-                        .WithOne("HouseholdMember")
-                        .HasForeignKey("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", "PersonId")
+                        .WithOne("HouseholdProfileDetailMOdel")
+                        .HasForeignKey("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

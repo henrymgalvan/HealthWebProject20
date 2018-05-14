@@ -69,7 +69,7 @@ namespace HealthWebApp2._0.Models.Person
         [Display(Name = "Relationship To Patient")]
         public string RelationshipToPatient { get; set; }
 
-        //        public virtual HouseholdMember HouseholdMember { get; set; }
+        //        public virtual HouseholdProfileDetailMOdel HouseholdProfileDetailMOdel { get; set; }
 
         //        public long PhilHealthId { get; set; }
         //        public string PhilHealth { get; set; }

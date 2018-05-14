@@ -450,7 +450,7 @@ namespace HealthWebApp2._0.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "HouseholdMember",
+                name: "HouseholdProfileDetailMOdel",
                 columns: table => new
                 {
                     PersonId = table.Column<long>(nullable: false),
@@ -540,7 +540,7 @@ namespace HealthWebApp2._0.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_HouseholdMember_HouseholdProfileId",
-                table: "HouseholdMember",
+                table: "HouseholdProfileDetailMOdel",
                 column: "HouseholdProfileId");
 
             migrationBuilder.CreateIndex(
@@ -598,7 +598,7 @@ namespace HealthWebApp2._0.Migrations
                 name: "Education");
 
             migrationBuilder.DropTable(
-                name: "HouseholdMember");
+                name: "HouseholdProfileDetailMOdel");
 
             migrationBuilder.DropTable(
                 name: "PhilHealth");
