@@ -56,22 +56,35 @@ namespace HealthWebApp2._0.Models.Person
         [Display(Name = "Religion")]
         public int ReligionId { get; set; }
 
-//        public virtual HouseholdMember HouseholdMember { get; set; }
-        
-//        public long PhilHealthId { get; set; }
-//        public string PhilHealth { get; set; }
+        //Emergency Contact Person
+        [StringLength(30, MinimumLength = 0)]
+        [Display(Name = "Contact Person")]
+        public string EmergencyContactPerson { get; set; }
 
-//        public long FatherId { get; set; }
- //       public Person Father { get; set; }
+        [Phone]
+        [Display(Name = "Emergency Contact Number")]
+        public string EmergencyContactNumber { get; set; }
 
-//        public long MotherId { get; set; }
-//        public virtual Person Mother { get; set; }
+        [StringLength(30, MinimumLength = 0)]
+        [Display(Name = "Relationship To Patient")]
+        public string RelationshipToPatient { get; set; }
 
-//        public bool PersonConsent { get; set; } //Consent of patient to digital storage
+        //        public virtual HouseholdMember HouseholdMember { get; set; }
 
-//        public DateTime DateTimeLastUpdated { get; set; }
-//        public DateTime DateCreated { get; set; }
-//        public long EmployeeId { get; set; }    //Updated by Last Employee
+        //        public long PhilHealthId { get; set; }
+        //        public string PhilHealth { get; set; }
+
+        //        public long FatherId { get; set; }
+        //       public Person Father { get; set; }
+
+        //        public long MotherId { get; set; }
+        //        public virtual Person Mother { get; set; }
+
+        //        public bool PersonConsent { get; set; } //Consent of patient to digital storage
+
+        //        public DateTime DateTimeLastUpdated { get; set; }
+        //        public DateTime DateCreated { get; set; }
+        //        public long EmployeeId { get; set; }    //Updated by Last Employee
 
     }
 }

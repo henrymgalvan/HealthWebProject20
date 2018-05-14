@@ -35,7 +35,16 @@ namespace HealthWebApp2._0.Models.Person
         public string Religion { get; set; }
         public string Father { get; set; }
         public string Mother { get; set; }
-        
+
+        [Display(Name = "Emergency Contact Person")]
+        public string EmergencyContactPerson { get; set; }
+
+        [Phone]
+        [Display(Name = "Emergency Contact Number")]
+        public string EmergencyContactNumber { get; set; }
+
+        [Display(Name = "Relationship To Patient")]
+        public string RelationshipToPatient { get; set; }
 
     }
 }

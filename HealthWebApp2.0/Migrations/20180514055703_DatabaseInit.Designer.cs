@@ -11,11 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using System;
 
-namespace HealthWebApp2._0.Data.Migrations
+namespace HealthWebApp2._0.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180506011617_Init")]
-    partial class Init
+    [Migration("20180514055703_DatabaseInit")]
+    partial class DatabaseInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -220,6 +220,10 @@ namespace HealthWebApp2._0.Data.Migrations
 
                     b.Property<string>("EmailAddress");
 
+                    b.Property<string>("EmergencyContactNumber");
+
+                    b.Property<string>("EmergencyContactPerson");
+
                     b.Property<long>("EmployeeId");
 
                     b.Property<int>("ExtensionName");
@@ -240,6 +244,8 @@ namespace HealthWebApp2._0.Data.Migrations
                     b.Property<int>("NameTitleId");
 
                     b.Property<bool>("PersonConsent");
+
+                    b.Property<string>("RelationshipToPatient");
 
                     b.Property<int>("ReligionId");
 

@@ -52,6 +52,19 @@ namespace HealthWebApp2._0.Models.Person
         [Display(Name = "Religion")]
         public int ReligionId { get; set; }
 
+        //Emergency Contact Person
+        [StringLength(30, MinimumLength = 0)]
+        [Display(Name = "Contact Person")]
+        public string EmergencyContactPerson { get; set; }
+
+        [Phone]
+        [Display(Name = "Emergency Contact Number")]
+        public string EmergencyContactNumber { get; set; }
+
+        [StringLength(30, MinimumLength = 0)]
+        [Display(Name = "Relationship To Patient")]
+        public string RelationshipToPatient { get; set; }
+
         public bool PersonConsent { get; set; }
         
         public DateTime DateTimeLastUpdated { get; set; }
