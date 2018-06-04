@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using HealthWebApp2._0.Data;
 using HealthWebApp2._0.Data.EntityModel;
+using HealthWebApp2._0.Data.EntityModel.Barangays;
 using HealthWebApp2._0.Data.Interface;
 using HealthWebApp2._0.Models.Person;
 using Microsoft.AspNetCore.Mvc;
@@ -14,13 +16,15 @@ namespace HealthWebApp2._0.Controllers
 {
     public class PersonController : Controller
     {
+        private ApplicationDbContext _context; 
         private IPerson _person;
         private IWork _work;
         private IReligion _religion;
         private INameTitle _nameTitle;
         private IMapper _mapper;
-        public PersonController(IPerson person, IWork work, IReligion religion, INameTitle nameTitle, IMapper mapper)
+        public PersonController(IPerson person, IWork work, IReligion religion, INameTitle nameTitle, IMapper mapper, ApplicationDbContext context)
         {
+            _context = context;
             _person = person;
             _work = work;
             _religion = religion;
@@ -61,6 +65,12 @@ namespace HealthWebApp2._0.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            List<Province> provinceList = new List<Province>();
+            provinceList = (from province in _context.Province
+                            select province).ToList();
+            provinceList.Insert(0, new Province { Id = 0, Name = "Select" });
+            ViewBag.ListOfProvince = provinceList;
+
             PopulateWorksDropDownList();
             PopulateNameTitleDropDownList();
             PopulateReligionDropDownList();

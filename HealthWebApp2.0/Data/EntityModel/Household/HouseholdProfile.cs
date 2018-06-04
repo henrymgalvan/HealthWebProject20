@@ -15,12 +15,15 @@ namespace HealthWebApp2._0.Data.EntityModel.Household
 
         public long BarangayId { get; set; }
         public virtual Barangay Barangay { get; set; }
+
         //CityOrMunicipality
         //public int CityMunicipalityId { get; set; }
         //public virtual CityMunicipality City { get; set; }
+        
         //Province
         //public int ProvinceId { get; set; }
         //public virtual Province Province { get; set; }
+        
         //Region
         //public int RegionId { get; set; }
         //public virtual Region Region { get; set; }

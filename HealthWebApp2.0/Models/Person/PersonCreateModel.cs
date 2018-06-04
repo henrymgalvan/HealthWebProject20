@@ -1,4 +1,5 @@
 ﻿using HealthWebApp2._0.Data.EntityModel;
+using HealthWebApp2._0.Models.HouseholdProfile;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -51,6 +52,8 @@ namespace HealthWebApp2._0.Models.Person
 
         [Display(Name = "Religion")]
         public int ReligionId { get; set; }
+
+        public HouseholdProfileCreateModel householdProfileCreateModel { get; set; }
 
         //Emergency Contact Person
         [StringLength(30, MinimumLength = 0)]
