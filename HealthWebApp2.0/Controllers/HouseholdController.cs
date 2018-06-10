@@ -35,14 +35,17 @@ namespace HealthWebApp2._0.Controllers
             if (allhouseholds.Any())
             {
                 householdModels = Mapper.Map<List<HouseholdProfile>, List<HouseholdProfileDetailModel>>(allhouseholds);
-                var model = new HouseholdProfileIndexModel()
+            }
+            else
+            {
+                householdModels = null;
+            }
+
+            var model = new HouseholdProfileIndexModel()
                 {
                     Households = householdModels
                 };
-                return View(model);
-            }
-            
-            return View("No Households");
+            return View(model);
         }
 
         [HttpGet]
@@ -64,19 +67,33 @@ namespace HealthWebApp2._0.Controllers
             var barangayQuery = from bq in _barangay.GetAll().ToList<Barangay>()
                                 orderby bq.Name
                                 select bq;
+
             if (selectedBarangay != null)
             {
                 var barangay = (Barangay)selectedBarangay;
                 int CityId = barangay.CityMunicipalityId;
+                barangayQuery = from bq in _barangay.GetAll().Where(c => c.Id == CityId).ToList<Barangay>()
+                                orderby bq.Name
+                                select bq;
                 selectedCity = (CityMunicipality)_city.Get(CityId);
-                int provinceId = _city.Get(CityId).ProvinceId;
+                int provinceId =  _city.Get(CityId).ProvinceId;
                 selectedProvince = _province.Get(provinceId);
             }
-            if (selectedCity != null)
+            else if (selectedCity != null)
             {
                 var City = (CityMunicipality)selectedCity;
+                barangayQuery = from bq in _barangay.GetAll().Where(c => c.Id == City.Id).ToList<Barangay>()
+                                orderby bq.Name
+                                select bq;
                 int provinceId = City.ProvinceId;
                 selectedProvince = _province.Get(provinceId);
+            }
+            else if (selectedProvince != null)
+            {
+                var province = (Province)selectedProvince;
+                cityQuery = from cq in _city.Getall().Where(p => p.ProvinceId == province.Id).ToList<CityMunicipality>()
+                            orderby cq.Name
+                            select cq;
             }
 
             ViewBag.ProvinceID = new SelectList(provinceQuery, "Id", "Name", selectedProvince);
@@ -84,34 +101,6 @@ namespace HealthWebApp2._0.Controllers
             ViewBag.BarangayID = new SelectList(barangayQuery, "Id", "Name", selectedBarangay);
 
         }
-        private void PopulateCityDropDownList(object selectedProvince = null, object selectedCity = null)
-        {
-            var cityQuery = from cq in _city.Getall().ToList<CityMunicipality>()
-                            orderby cq.Name
-                            select cq;
 
-            if (selectedProvince != null)
-            {
-                cityQuery = from cq in _city.Getall().Where(p => p.ProvinceId == (int)selectedProvince).ToList<CityMunicipality>()
-                                orderby cq.Name
-                                select cq;
-            }
-
-            ViewBag.CityID = new SelectList(cityQuery, "Id", "Name", selectedCity);
-            
-        }
-        private void PopulateBarangayDropDownList(object selectedProvince = null, object selectedCity = null, object selectedBarangay = null)
-        {
-            var provinceQuery = from pq in _province.Getall().ToList<Province>()
-                                orderby pq.Name
-                                select pq;
-            if (selectedCity != null)
-            {
-                var City = (CityMunicipality)selectedCity;
-                int provinceId = City.ProvinceId;
-                selectedProvince = _province.Get(provinceId);
-            }
-            ViewBag.ProvinceID = new SelectList(provinceQuery, "Id", "Name", selectedProvince);
-        }
     }
 }

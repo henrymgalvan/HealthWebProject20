@@ -19,12 +19,12 @@
             </tr>
         </thead>
         <tbody class="alert-info">
-            @if (Model != null)
+            @if (@Model != null)
             {
-                @foreach (var household in Model.Households)
+                @foreach (var household in @Model.Households)
                 {
                     <tr>
-                        <td id="HouseholdIcon"><a asp-controller="Household" asp-action="Details" asp-route-id="@household.Id">@household.Id</a></td>
+                        <td id="HouseholdIcon"><a asp-controller="Household" asp-action="Details" asp-route-id="@household.Id"> @household.Id</a></td>
                         <td>@household.ProfileId</td>
                         <td>@household.Address</td>
                         <td>@household.Barangay</td>
@@ -42,4 +42,9 @@
         </tbody>
     </table>
 </div>
+
+<div>
+    <a asp-controller="Household" asp-action="Create">Create new Patient record.</a>
+</div>
+
 
