@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2043
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthWebApp2.0", "HealthWebApp2.0\HealthWebApp2.0.csproj", "{4C92E1B4-E966-41D0-9B15-E49B6C13D5EC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthWebApp2.0", "HealthWebApp2.0\HealthWebApp2.0.csproj", "{4C92E1B4-E966-41D0-9B15-E49B6C13D5EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

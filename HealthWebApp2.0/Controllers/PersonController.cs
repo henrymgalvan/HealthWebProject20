@@ -65,12 +65,6 @@ namespace HealthWebApp2._0.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            List<Province> provinceList = new List<Province>();
-            provinceList = (from province in _context.Province
-                            select province).ToList();
-            provinceList.Insert(0, new Province { Id = 0, Name = "Select" });
-            ViewBag.ListOfProvince = provinceList;
-
             PopulateWorksDropDownList();
             PopulateNameTitleDropDownList();
             PopulateReligionDropDownList();

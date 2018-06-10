@@ -63,6 +63,8 @@ namespace HealthWebApp2._0
             services.AddScoped<IPerson, PersonService>();
             services.AddScoped<IHouseholdProfile, HouseholdProfileService>();
             services.AddScoped<IBarangay, BarangayService>();
+            services.AddScoped<ICity, CityService>();
+            services.AddScoped<IProvince, ProvinceService>();
             services.AddScoped<IHouseholdMember, HouseholdMemberService>();
             services.AddScoped<IWork, WorkService>();
             services.AddScoped<IReligion, ReligionService>();

@@ -1,0 +1,45 @@
+﻿@model HealthWebApp2._0.Models.HouseholdProfile.HouseholdProfileIndexModel
+
+@{ 
+    ViewBag.Title = "Household Index";
+}
+
+<h3>Household List</h3>
+<div>
+    <table class="table table-bordered table-hover table-condensed table-striped">
+        <thead>
+            <tr class="alert-success">
+                <th>Id #</th>
+                <th>Profile Id</th>
+                <th>Adress</th>
+                <th>Barangay</th>
+                <th>City</th>
+                <th>Province</th>
+                <th># Members</th>
+            </tr>
+        </thead>
+        <tbody class="alert-info">
+            @if (Model != null)
+            {
+                @foreach (var household in Model.Households)
+                {
+                    <tr>
+                        <td id="HouseholdIcon"><a asp-controller="Household" asp-action="Details" asp-route-id="@household.Id">@household.Id</a></td>
+                        <td>@household.ProfileId</td>
+                        <td>@household.Address</td>
+                        <td>@household.Barangay</td>
+                        <td>@household.City</td>
+                        <td>@household.Province</td>
+                        <td>@household.NumberOfMembers</td>
+                        <td id="HouseholdIcon">
+                            <a asp-controller="Household" asp-action="Edit" asp-route-id="@household.Id"> Edit</a>
+                            <a asp-controller="Household" asp-action="Details" asp-route-id="@household.Id"> Details</a>
+                            <a asp-controller="Household" asp-action="Delete" asp-route-id="@household.Id"> Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

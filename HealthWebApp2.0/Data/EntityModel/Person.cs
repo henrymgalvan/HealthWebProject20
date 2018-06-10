@@ -23,8 +23,6 @@ namespace HealthWebApp2._0.Data.EntityModel
         NA = 0, II = 1, III = 2, IV = 3, V = 4, Jr = 5, Sr = 6
     }
 
-
-
     public class Person
     {
         [Key]
