@@ -43,7 +43,8 @@ namespace HealthWebApp2._0.Services
                    // .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.Id));
             CreateMap<PersonEditModel, Person>();
             CreateMap<HouseholdProfile, HouseholdProfileDetailModel>();
-
+            CreateMap<HouseholdProfileCreateModel, HouseholdProfile>();
+               
 
 
         }

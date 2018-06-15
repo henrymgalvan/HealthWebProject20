@@ -63,6 +63,8 @@ namespace HealthWebApp2._0.Data.EntityModel
 
         public long? FamilyId { get; set; }
         public virtual Family Family { get; set; }
+        //public long FatherId {get; set;}
+        //public long MotherId {get; set;}
 
         public virtual PhilHealth PhilHealth { get; set; }
 

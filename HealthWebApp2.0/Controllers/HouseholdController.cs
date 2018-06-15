@@ -55,6 +55,29 @@ namespace HealthWebApp2._0.Controllers
             var model = new HouseholdProfileCreateModel();
             return View(model);
         }
+        [HttpPost]
+        public IActionResult Create(HouseholdProfileCreateModel newHousehold)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var household = Mapper.Map<HouseholdProfileCreateModel, HouseholdProfile>(newHousehold);
+                    household.DateCreated = DateTime.Now;
+                    household.DateCreated = DateTime.Now;
+
+                    _householdProfile.Add(household);
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Microsoft.EntityFrameworkCore.Storage.RetryLimitExceededException err)
+            {
+                ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
+            }
+            PopulateDropDownList(newHousehold.ProvinceId, newHousehold.CityId, newHousehold.BarangayId);
+            return View(newHousehold);
+        }
 
         private void PopulateDropDownList(object selectedProvince = null, object selectedCity = null, object selectedBarangay = null)
         {
