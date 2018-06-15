@@ -16,10 +16,11 @@
                 <th>City</th>
                 <th>Province</th>
                 <th># Members</th>
+                <th></th>
             </tr>
         </thead>
         <tbody class="alert-info">
-            @*@if (@Model != null)
+            @if (@Model != null)
             {
                 @foreach (var household in @Model.Households)
                 {
@@ -38,7 +39,7 @@
                         </td>
                     </tr>
                 }
-            }*@
+            }
         </tbody>
     </table>
 </div>
