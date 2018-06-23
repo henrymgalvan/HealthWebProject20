@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HealthWebApp2._0.Data.EntityModel.Household;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HealthWebApp2._0.Models.HouseholdMember

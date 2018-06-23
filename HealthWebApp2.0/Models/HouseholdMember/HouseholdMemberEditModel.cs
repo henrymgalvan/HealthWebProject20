@@ -1,9 +1,8 @@
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace HealthWebApp2._0.Models.HouseholdMember
 {
-    public class HouseholdMemberDetailModel
+    public class HouseholdMemberEditModel
     {
         [Display(Name="Member Id")]
         public long Id {get; set;}

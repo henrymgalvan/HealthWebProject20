@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace HealthWebApp2._0.Models.HouseholdMember
+namespace HealthWebApp2._0.Models.HouseholdProfile
 {
     public class HouseholdProfileCreateModel
     {

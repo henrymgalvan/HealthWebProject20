@@ -44,5 +44,10 @@ namespace HealthWebApp2._0.Data.Services
             _context.Province.Remove(province);
             _context.SaveChanges();
         }
+
+        public int GetId(string province)
+        {
+            return _context.Province.FirstOrDefault(p => p.Name == province).Id;
+        }
     }
 }

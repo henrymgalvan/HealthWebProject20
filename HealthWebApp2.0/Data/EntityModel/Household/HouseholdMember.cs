@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,6 +20,8 @@ namespace HealthWebApp2._0.Data.EntityModel.Household
         public virtual Person Person { get; set; }
 
         public RelationToHouseholdHead RelationToHead { get; set; }
+
+        public DateTime DateCreated { get; set; }
 
         public long HouseholdProfileId { get; set; }
         public virtual HouseholdProfile HouseholdProfile { get; set; }

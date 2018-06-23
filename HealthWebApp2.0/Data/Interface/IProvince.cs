@@ -10,6 +10,7 @@ namespace HealthWebApp2._0.Data.Interface
     {
         IEnumerable<Province> Getall();
         Province Get(int Id);
+        int GetId(string province);
         void Add(Province newProvince);
         void Update(Province updatedProvince);
         void Delete(int Id);

@@ -10,5 +10,6 @@ namespace HealthWebApp2._0.Data.Interface
         void Add(CityMunicipality newCity);
         void Update(CityMunicipality updatedCity);
         void Delete(int Id);
+        int GetId(string city);
     }
 }

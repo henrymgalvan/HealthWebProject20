@@ -1,4 +1,4 @@
-﻿using HealthWebApp2._0.Data.EntityModel.Household;
+﻿using HealthWebApp2._0.Models.HouseholdMember;
 using System.Collections.Generic;
 
 namespace HealthWebApp2._0.Models.HouseholdProfile
@@ -13,6 +13,6 @@ namespace HealthWebApp2._0.Models.HouseholdProfile
         public string Province { get; set; }
         public string NumberOfMembers { get; set; }
         public string Note { get; set; }
-        public IEnumerable<HouseholdMember> HouseHolds { get; set; }
+        //public IEnumerable<HouseholdMemberDetailModel> HouseHolds { get; set; }
     }
 }

@@ -51,8 +51,8 @@ namespace HealthWebApp2._0.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            var ProvinceId = _province.Where(p => p.Name == "Pangasinan").Id;
-            var CityId = _city.Where(c => c.Name == "Dagupan City").Id;
+            var ProvinceId = _province.GetId("Pangasinan");
+            var CityId = _city.GetId("Dagupan City");
             PopulateDropDownList(ProvinceId, CityId);
             var model = new HouseholdProfileCreateModel();
             return View(model);
@@ -65,7 +65,6 @@ namespace HealthWebApp2._0.Controllers
                 if (ModelState.IsValid)
                 {
                     var household = Mapper.Map<HouseholdProfileCreateModel, HouseholdProfile>(newHousehold);
-                    household.DateCreated = DateTime.Now;
                     household.DateCreated = DateTime.Now;
 
                     _householdProfile.Add(household);

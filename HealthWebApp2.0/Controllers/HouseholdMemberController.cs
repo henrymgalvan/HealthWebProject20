@@ -9,6 +9,7 @@ using HealthWebApp2._0.Models.HouseholdProfile;
 using Microsoft.AspNetCore.Mvc;
 using HealthWebApp2._0.Data.EntityModel.Barangays;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using HealthWebApp2._0.Models.HouseholdMember;
 
 namespace HealthWebApp2._0.Controllers
 {
@@ -32,15 +33,15 @@ namespace HealthWebApp2._0.Controllers
         public IActionResult Index()
         {
             List<HouseholdMember> allhouseholdMember = _householdMember.GetAll().ToList();
-            IEnumerable<HouseholdMemberDetailModel> householdMemberModels;
+            IEnumerable<HouseholdMemberEditModel> householdMemberModels;
 
-            if (allhouseholdMemmber.Any())
+            if (allhouseholdMember.Any())
             {
-                householdMemberModels = Mapper.Map<List<HouseholdMember>, List<HouseholdMemberDetailModel>>(allhouseholdMember);
+                householdMemberModels = Mapper.Map<List<HouseholdMember>, List<HouseholdMemberEditModel>>(allhouseholdMember);
             }
             else
             {
-                householdMembers = null;
+                householdMemberModels = null;
             }
 
             var model = new HouseholdMemberIndexModel()
@@ -63,8 +64,7 @@ namespace HealthWebApp2._0.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var householdmember = Mapper.Map<HouseholdMemberCreateModel, HouseholdMember>(newHouseholdMemmber);
-                    householdmember.DateCreated = DateTime.Now;
+                    var householdmember = Mapper.Map<HouseholdMemberCreateModel, HouseholdMember>(newHouseholdMember);
                     householdmember.DateCreated = DateTime.Now;
 
                     _householdMember.Add(householdmember);

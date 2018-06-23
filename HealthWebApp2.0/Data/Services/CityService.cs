@@ -44,6 +44,11 @@ namespace HealthWebApp2._0.Data.Services
             _context.City.Remove(city);
             _context.SaveChanges();
         }
-     }
+
+        public int GetId(string city)
+        {
+            return _context.City.FirstOrDefault(c => c.Name == city).Id;
+        }
+    }
 }
 
