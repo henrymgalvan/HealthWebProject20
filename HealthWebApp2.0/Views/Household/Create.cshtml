@@ -8,7 +8,7 @@
 
 <h2>Create</h2>
 
-<form asp-controller="Household" asp-action="Create" method="post">
+<form name="form1" asp-controller="Household" asp-action="Create" method="post">
     <div class="form-horizontal">
         <h4>Create New Household</h4>
         <hr />
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label asp-for="BarangayId" class="col-md-2 control-label">Barangay</label>
                 <div class="col-md-4">
-                    <select asp-for="BarangayId" class="form-control" asp-items="@ViewBag.BarangayID">
+                    <select asp-for="BarangayId" class="form-control" asp-items="@ViewBag.BarangayID" onchange="DoPostBack();">
                         <option value="">-- Select Barangay --</option>
                     </select>
                     <span asp-validation-for="BarangayId" class="text-danger" />
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label asp-for="CityId" class="col-md-2 control-label">City</label>
                 <div class="col-md-4">
-                    <select asp-for="CityId" class="form-control" asp-items="@ViewBag.CityID">
+                    <select asp-for="CityId" class="form-control" asp-items="@ViewBag.CityID" disabled>
                         <option value="">-- Select City --</option>
                     </select>
                     <span asp-validation-for="CityId" class="text-danger" />
@@ -49,7 +49,7 @@
             <div class="form-group">
                 <label asp-for="ProvinceId" class="col-md-2 control-label">Province</label>
                 <div class="col-md-4">
-                    <select asp-for="ProvinceId" class="form-control" asp-items="@ViewBag.ProvinceID">
+                    <select asp-for="ProvinceId" class="form-control" asp-items="@ViewBag.ProvinceID" disabled>
                         <option value="">-- Select Province --</option>
                     </select>
                     <span asp-validation-for="ProvinceId" class="text-danger" />
@@ -72,15 +72,11 @@
 </form>
 
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-    @section Scripts 
-    {
-
-
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-
-
-    }
+@section Scripts
+{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

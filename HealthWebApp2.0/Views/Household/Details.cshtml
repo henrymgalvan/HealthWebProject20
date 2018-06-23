@@ -1,0 +1,66 @@
+@using HealthWebApp2._0.Models.HouseholdProfile
+@model HealthWebApp2._0.Models.HouseholdProfile.HouseholdProfileDetailModel
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+
+        <div class="clearfix">
+            <h3 class="text-muted">Detail of @Model.ProfileId</h3>
+        </div>
+
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>ProfileId : @Model.ProfileId</div>
+                    <div>Adress : @Model.Adress </div>
+                    <div>City : @Model.City </div>
+                    <div>Province : @Model.Province </div>
+                    <div>Note : @Model.Note </div>
+                    <div>No. of Members : @Model.NoOfMembers</div>
+                </div>
+            </div>
+        <div>
+            <table class="table table-bordered table-hover table-condensed table-striped">
+                <thead>
+                    <tr class="alert-success">
+                        <th>Id</th>
+                        <th>Full Name</th>
+                        <th>Gender</th>
+                        <th>Age</th>
+                        <th>Birthday</th>
+                        <th>Relation To Head</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody class="alert-info">
+                    @if (@Model.Households != null)
+                    {
+                        @foreach (var member in @Model.Households)
+                        {
+                            <tr>
+                                <td>@member.Id</td>
+                                <td id="MemberIcon"><a asp-controller="Member" asp-action="Details" asp-route-id="@member.Id"> @member.FullName</a></td>
+                                <td>@member.Gender</td>
+                                <td>@member.Age</td>
+                                <td>@member.Birthday</td>
+                                <td>@member.RelationToHead</td>
+                                <td id="MemberIcon">
+                                    <a asp-controller="Member" asp-action="Edit" asp-route-id="@Member.Id"> Edit</a>
+                                    <a asp-controller="Member" asp-action="Details" asp-route-id="@Member.Id"> Details</a>
+                                    <a asp-controller="Member" asp-action="Delete" asp-route-id="@Member.Id"> Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <div>
+            <a asp-controller="Person" asp-action="Index">Back to Index</a>
+        </div>
+    </div>
+}

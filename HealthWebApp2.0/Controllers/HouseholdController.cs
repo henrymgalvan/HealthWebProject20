@@ -51,7 +51,9 @@ namespace HealthWebApp2._0.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            PopulateDropDownList();
+            var ProvinceId = _province.Where(p => p.Name == "Pangasinan").Id;
+            var CityId = _city.Where(c => c.Name == "Dagupan City").Id;
+            PopulateDropDownList(ProvinceId, CityId);
             var model = new HouseholdProfileCreateModel();
             return View(model);
         }
@@ -69,13 +71,12 @@ namespace HealthWebApp2._0.Controllers
                     _householdProfile.Add(household);
                     return RedirectToAction("Index");
                 }
-
+                PopulateDropDownList(newHousehold.ProvinceId, newHousehold.CityId, newHousehold.BarangayId);
             }
             catch (Microsoft.EntityFrameworkCore.Storage.RetryLimitExceededException err)
             {
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
-            PopulateDropDownList(newHousehold.ProvinceId, newHousehold.CityId, newHousehold.BarangayId);
             return View(newHousehold);
         }
 
