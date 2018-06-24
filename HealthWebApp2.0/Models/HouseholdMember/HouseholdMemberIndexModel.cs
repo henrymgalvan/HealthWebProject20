@@ -5,6 +5,6 @@ namespace HealthWebApp2._0.Models.HouseholdMember
 {
     public class HouseholdMemberIndexModel
     {
-        public IEnumerable<HouseholdMemberEditModel> HouseholdMembers { get; set; }
+        public IEnumerable<HouseholdMemberDetailModel> HouseholdMembers { get; set; }
     }
 }

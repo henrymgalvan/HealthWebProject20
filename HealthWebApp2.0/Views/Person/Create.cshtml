@@ -1,5 +1,6 @@
 @using HealthWebApp2._0.Data.EntityModel
 @using HealthWebApp2._0.Models.HouseholdProfile
+@using HealthWebApp2._0.Data.EntityModel.Household
 @model HealthWebApp2._0.Models.Person.PersonCreateModel
 
 
@@ -156,11 +157,11 @@
         <div class="form-group">
             <label asp-for="RelationshipToPatient" class="col-md-2 control-label"></label>
             <div class="col-md-4">
-                <input asp-for="RelationshipToPatient" class="form-control" />
+                <select asp-for="RelationshipToPatient" class="form-control"
+                        asp-items="Html.GetEnumSelectList<RelationToHouseholdHead>()"></select>
                 <span asp-validation-for="RelationshipToPatient" class="text-danger"></span>
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-4">
                 <div class="checkbox">

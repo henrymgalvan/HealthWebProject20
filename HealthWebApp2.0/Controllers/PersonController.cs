@@ -83,6 +83,8 @@ namespace HealthWebApp2._0.Controllers
                     if (newPerson.PersonConsent)
                     {
                         var person = Mapper.Map<PersonCreateModel, Person>(newPerson);
+                        person.DateCreated = DateTime.Now;
+                        person.DateTimeLastUpdated = DateTime.Now;
                         _person.Add(person);
                         return RedirectToAction("Index");
                     }

@@ -82,6 +82,6 @@ namespace HealthWebApp2._0.Data.EntityModel
         //Emergency Contact Person
         public string EmergencyContactPerson { get; set; }
         public string EmergencyContactNumber { get; set; }
-        public string RelationshipToPatient { get; set; }
+        public RelationToHouseholdHead RelationshipToPatient { get; set; }
     }
 }

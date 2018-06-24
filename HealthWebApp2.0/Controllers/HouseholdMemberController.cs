@@ -33,11 +33,11 @@ namespace HealthWebApp2._0.Controllers
         public IActionResult Index()
         {
             List<HouseholdMember> allhouseholdMember = _householdMember.GetAll().ToList();
-            IEnumerable<HouseholdMemberEditModel> householdMemberModels;
+            IEnumerable<HouseholdMemberDetailModel> householdMemberModels;
 
             if (allhouseholdMember.Any())
             {
-                householdMemberModels = Mapper.Map<List<HouseholdMember>, List<HouseholdMemberEditModel>>(allhouseholdMember);
+                householdMemberModels = Mapper.Map<List<HouseholdMember>, List<HouseholdMemberDetailModel>>(allhouseholdMember);
             }
             else
             {

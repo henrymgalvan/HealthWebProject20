@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HealthWebApp2._0.Models.HouseholdMember
 {
-    public class HouseholdMemberEditModel
+    public class HouseholdMemberDetailModel
     {
         [Display(Name="Member Id")]
         public long Id {get; set;}
@@ -12,7 +12,7 @@ namespace HealthWebApp2._0.Models.HouseholdMember
         public string MemberName {get; set;}
 
         [Display(Name="Relation To Household Head")]
-        public string Id { get; set; }
+        public string RelationToHouseholdId { get; set; }
 
         [Display(Name = "Household")]
         public long HouseholdId { get; set; }

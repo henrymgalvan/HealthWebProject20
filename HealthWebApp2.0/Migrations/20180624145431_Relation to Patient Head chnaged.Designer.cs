@@ -14,9 +14,10 @@ using System;
 namespace HealthWebApp2._0.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20180624145431_Relation to Patient Head chnaged")]
+    partial class RelationtoPatientHeadchnaged
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

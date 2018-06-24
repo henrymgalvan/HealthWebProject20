@@ -1,4 +1,5 @@
 ﻿using HealthWebApp2._0.Data.EntityModel;
+using HealthWebApp2._0.Data.EntityModel.Household;
 using HealthWebApp2._0.Models.HouseholdProfile;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -64,14 +65,13 @@ namespace HealthWebApp2._0.Models.Person
         [Display(Name = "Emergency Contact Number")]
         public string EmergencyContactNumber { get; set; }
 
-        [StringLength(30, MinimumLength = 0)]
         [Display(Name = "Relationship To Patient")]
-        public string RelationshipToPatient { get; set; }
+        public RelationToHouseholdHead RelationshipToPatient { get; set; }
 
         public bool PersonConsent { get; set; }
         
-        public DateTime DateTimeLastUpdated { get; set; }
-        public DateTime DateCreated { get; set; }
+        //public DateTime DateTimeLastUpdated { get; set; }
+        //public DateTime DateCreated { get; set; }
         public long EmployeeId { get; set; }
     }
 }

@@ -14,7 +14,7 @@ using System;
 namespace HealthWebApp2._0.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180514055703_DatabaseInit")]
+    [Migration("20180624123854_Database Init")]
     partial class DatabaseInit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -150,9 +150,11 @@ namespace HealthWebApp2._0.Migrations
                     b.ToTable("Education");
                 });
 
-            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", b =>
+            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", b =>
                 {
                     b.Property<long>("PersonId");
+
+                    b.Property<DateTime>("DateCreated");
 
                     b.Property<long>("HouseholdProfileId");
 
@@ -162,7 +164,7 @@ namespace HealthWebApp2._0.Migrations
 
                     b.HasIndex("HouseholdProfileId");
 
-                    b.ToTable("HouseholdProfileDetailMOdel");
+                    b.ToTable("HouseholdMember");
                 });
 
             modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfile", b =>
@@ -526,7 +528,7 @@ namespace HealthWebApp2._0.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", b =>
+            modelBuilder.Entity("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", b =>
                 {
                     b.HasOne("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfile", "HouseholdProfile")
                         .WithMany("HouseholdMembers")
@@ -534,8 +536,8 @@ namespace HealthWebApp2._0.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HealthWebApp2._0.Data.EntityModel.Person", "Person")
-                        .WithOne("HouseholdProfileDetailMOdel")
-                        .HasForeignKey("HealthWebApp2._0.Data.EntityModel.Household.HouseholdProfileDetailMOdel", "PersonId")
+                        .WithOne("HouseholdMember")
+                        .HasForeignKey("HealthWebApp2._0.Data.EntityModel.Household.HouseholdMember", "PersonId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
