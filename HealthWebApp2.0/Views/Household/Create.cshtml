@@ -8,7 +8,7 @@
 
 <h2>Create</h2>
 
-<form name="form1" asp-controller="Household" asp-action="Create" method="post">
+<form asp-controller="Household" asp-action="Create" method="post">
     <div class="form-horizontal">
         <h4>Create New Household</h4>
         <hr />
@@ -31,7 +31,7 @@
             <div class="form-group">
                 <label asp-for="BarangayId" class="col-md-2 control-label">Barangay</label>
                 <div class="col-md-4">
-                    <select asp-for="BarangayId" class="form-control" asp-items="@ViewBag.BarangayID" onchange="DoPostBack();">
+                    <select asp-for="BarangayId" class="form-control" asp-items="@ViewBag.BarangayID" >
                         <option value="">-- Select Barangay --</option>
                     </select>
                     <span asp-validation-for="BarangayId" class="text-danger" />

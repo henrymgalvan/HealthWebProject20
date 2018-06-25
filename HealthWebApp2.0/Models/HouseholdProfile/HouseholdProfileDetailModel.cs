@@ -13,6 +13,6 @@ namespace HealthWebApp2._0.Models.HouseholdProfile
         public string Province { get; set; }
         public string NumberOfMembers { get; set; }
         public string Note { get; set; }
-        //public IEnumerable<HouseholdMember> HouseHolds { get; set; }
+        public IEnumerable<HouseholdMemberDetailModel> HouseHoldMembers { get; set; }
     }
 }

@@ -37,15 +37,19 @@ namespace HealthWebApp2._0.Services
             //    .ForMember(dest => dest.CivilStatus, opt =>
             //;
             CreateMap<PersonCreateModel, Person>();
-
-
             CreateMap<Person, PersonEditModel>();
                    // .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.Id));
             CreateMap<PersonEditModel, Person>();
+            
+            CreateMap<HouseholdMemberDetailModel, HouseholdMember>()
+                .ForMember(dest => dest.MemberName, opt => opt.MapFrom(src. => src.Person.FullName)
+                .ForMember(dest => dest.RelationToHouseholdHead, opt => opt.MapFrom(src => src.RelationToHead.ToString());
+
             CreateMap<HouseholdProfile, HouseholdProfileDetailModel>()
                 .ForMember(dest => dest.Barangay, opt => opt.MapFrom(src => src.Barangay.Name))
                 .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Barangay.CityMunicipality.Name))
-                .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Barangay.CityMunicipality.Province.Name));
+                .ForMember(dest => dest.Province, opt => opt.MapFrom(src => src.Barangay.CityMunicipality.Province.Name))
+                .ForMember(dest => dest.HouseholdMembers, opt => opt.MapFrom(src => src.HouseholdMembers));
             CreateMap<HouseholdProfileCreateModel, HouseholdProfile>();
                
 

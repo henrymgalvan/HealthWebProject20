@@ -29,6 +29,7 @@ namespace HealthWebApp2._0.Data.Services
                 .Include(b => b.Barangay)
                 .Include(c => c.Barangay.CityMunicipality)
                 .Include(p => p.Barangay.CityMunicipality.Province)
+                .Include(m => m.HouseholdMembers)
                 .ToList();
         }
 

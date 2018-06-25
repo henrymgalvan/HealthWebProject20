@@ -12,7 +12,7 @@ namespace HealthWebApp2._0.Models.HouseholdMember
         public string MemberName {get; set;}
 
         [Display(Name="Relation To Household Head")]
-        public string RelationToHouseholdId { get; set; }
+        public string RelationToHouseholdHead { get; set; }
 
         [Display(Name = "Household")]
         public long HouseholdId { get; set; }
