@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HealthWebApp2._0.Data.EntityModel;
 using HealthWebApp2._0.Data.EntityModel.Household;
+using HealthWebApp2._0.Models.HouseholdMember;
 using HealthWebApp2._0.Models.HouseholdProfile;
 using HealthWebApp2._0.Models.Person;
 
@@ -41,9 +42,9 @@ namespace HealthWebApp2._0.Services
                    // .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.Id));
             CreateMap<PersonEditModel, Person>();
             
-            CreateMap<HouseholdMemberDetailModel, HouseholdMember>()
-                .ForMember(dest => dest.MemberName, opt => opt.MapFrom(src. => src.Person.FullName)
-                .ForMember(dest => dest.RelationToHouseholdHead, opt => opt.MapFrom(src => src.RelationToHead.ToString());
+            CreateMap< HouseholdMember, HouseholdMemberDetailModel>()
+                .ForMember(dest => dest.MemberName, opt => opt.MapFrom(src => src.Person.FullName))
+                .ForMember(dest => dest.RelationToHouseholdHead, opt => opt.MapFrom(src => src.RelationToHead.ToString()));
 
             CreateMap<HouseholdProfile, HouseholdProfileDetailModel>()
                 .ForMember(dest => dest.Barangay, opt => opt.MapFrom(src => src.Barangay.Name))
