@@ -41,7 +41,7 @@
                 <label asp-for="CityId" class="col-md-2 control-label">City</label>
                 <div class="col-md-4">
                     <select asp-for="CityId" class="form-control" asp-items="@ViewBag.CityID" disabled>
-                        <option value="">-- Select City --</option>
+                        @*<option value="">-- Select City --</option>*@
                     </select>
                     <span asp-validation-for="CityId" class="text-danger" />
                 </div>
@@ -50,7 +50,7 @@
                 <label asp-for="ProvinceId" class="col-md-2 control-label">Province</label>
                 <div class="col-md-4">
                     <select asp-for="ProvinceId" class="form-control" asp-items="@ViewBag.ProvinceID" disabled>
-                        <option value="">-- Select Province --</option>
+                        @*<option value="">-- Select Province --</option>*@
                     </select>
                     <span asp-validation-for="ProvinceId" class="text-danger" />
                 </div>

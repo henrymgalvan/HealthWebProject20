@@ -53,8 +53,13 @@ namespace HealthWebApp2._0.Controllers
         {
             var ProvinceId = _province.GetId("Pangasinan");
             var CityId = _city.GetId("Dagupan City");
-            PopulateDropDownList(ProvinceId, CityId);
+            //var BarangayId = _barangay.GetBarangayById(0);
+
+            PopulateDropDownList(ProvinceId, CityId, null);
+
             var model = new HouseholdProfileCreateModel();
+            model.CityId = CityId;
+            model.ProvinceId = ProvinceId;
             return View(model);
         }
         [HttpPost]
@@ -93,7 +98,7 @@ namespace HealthWebApp2._0.Controllers
 
             if (selectedBarangay != null)
             {
-                var barangay = (Barangay)selectedBarangay;
+                var barangay = _barangay.GetBarangayById((int)selectedBarangay);
                 int CityId = barangay.CityMunicipalityId;
                 barangayQuery = from bq in _barangay.GetAll().Where(c => c.Id == CityId).ToList<Barangay>()
                                 orderby bq.Name
@@ -104,8 +109,8 @@ namespace HealthWebApp2._0.Controllers
             }
             else if (selectedCity != null)
             {
-                var City = (CityMunicipality)selectedCity;
-                barangayQuery = from bq in _barangay.GetAll().Where(c => c.Id == City.Id).ToList<Barangay>()
+                var City = _city.Get((int)selectedCity);
+                barangayQuery = from bq in _barangay.GetAll().Where(c => c.CityMunicipalityId == City.Id).ToList<Barangay>()
                                 orderby bq.Name
                                 select bq;
                 int provinceId = City.ProvinceId;
@@ -113,7 +118,7 @@ namespace HealthWebApp2._0.Controllers
             }
             else if (selectedProvince != null)
             {
-                var province = (Province)selectedProvince;
+                var province = _province.Get((int)selectedProvince);
                 cityQuery = from cq in _city.Getall().Where(p => p.ProvinceId == province.Id).ToList<CityMunicipality>()
                             orderby cq.Name
                             select cq;
