@@ -15,13 +15,12 @@ namespace HealthWebApp2._0.Data.EntityModel.Household
 
         public long BarangayId { get; set; }
         public virtual Barangay Barangay { get; set; }
-
-        public string Note { get; set; }
         //public int GeotagId { get; set; }
         //public virtual GeoTag Geotag { get; set; }
         public virtual ICollection<HouseholdMember> HouseholdMembers { get; set; }
         public DateTime DateTimeLastUpdated { get; set; }
         public DateTime DateCreated { get; set; }
         public long EmployeeId { get; set; }
+        public string Note { get; set; }        
     }
 }
