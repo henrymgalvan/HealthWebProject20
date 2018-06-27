@@ -62,6 +62,7 @@ namespace HealthWebApp2._0.Controllers
             model.ProvinceId = ProvinceId;
             return View(model);
         }
+
         [HttpPost]
         public IActionResult Create(HouseholdProfileCreateModel newHousehold)
         {
@@ -82,6 +83,18 @@ namespace HealthWebApp2._0.Controllers
                 ModelState.AddModelError(err.ToString(), "Unable to save changes. Try again, and if the problem persists, see your system administrator.");
             }
             return View(newHousehold);
+        }
+
+        public IActionResult Details(long Id)
+        {
+            HouseholdProfile household = _householdProfile.GetById(Id);
+            if (household != null)
+            {
+                var model = Mapper.Map<HouseholdProfile, HouseholdProfileDetailModel>(household);
+                return View(model);
+            }
+            return RedirectToAction("Index", household);
+
         }
 
         private void PopulateDropDownList(object selectedProvince = null, object selectedCity = null, object selectedBarangay = null)

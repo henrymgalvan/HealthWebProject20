@@ -11,11 +11,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div>ProfileId : @Model.ProfileId</div>
-                    <div>Adress : @Model.Adress </div>
+                    <div>Adress : @Model.Address </div>
                     <div>City : @Model.City </div>
                     <div>Province : @Model.Province </div>
                     <div>Note : @Model.Note </div>
-                    <div>No. of Members : @Model.NoOfMembers</div>
+                    <div>No. of Members : @Model.NumberOfMembers</div>
                 </div>
             </div>
         <div>
@@ -24,9 +24,6 @@
                     <tr class="alert-success">
                         <th>Id</th>
                         <th>Full Name</th>
-                        <th>Gender</th>
-                        <th>Age</th>
-                        <th>Birthday</th>
                         <th>Relation To Head</th>
                         <th></th>
                     </tr>
@@ -37,16 +34,13 @@
                         @foreach (var member in @Model.HouseholdMembers)
                         {
                             <tr>
-                                <td>@member.Id</td>
-                                <td id="MemberIcon"><a asp-controller="Member" asp-action="Details" asp-route-id="@member.Id"> @member.FullName</a></td>
-                                <td>@member.Gender</td>
-                                <td>@member.Age</td>
-                                <td>@member.Birthday</td>
-                                <td>@member.RelationToHead</td>
+                                <td>@member.PersonId</td>
+                                <td id="MemberIcon"><a asp-controller="Member" asp-action="Details" asp-route-id="@member.MemberName"> @member.MemberName</a></td>
+                                <td>@member.RelationToHouseholdHead</td>
                                 <td id="MemberIcon">
-                                    <a asp-controller="Member" asp-action="Edit" asp-route-id="@Member.Id"> Edit</a>
-                                    <a asp-controller="Member" asp-action="Details" asp-route-id="@Member.Id"> Details</a>
-                                    <a asp-controller="Member" asp-action="Delete" asp-route-id="@Member.Id"> Delete</a>
+                                    <a asp-controller="HouseholdMember" asp-action="Edit" asp-route-id="@member.PersonId"> Edit</a>
+                                    <a asp-controller="HouseholdMember" asp-action="Details" asp-route-id="@member.PersonId"> Details</a>
+                                    <a asp-controller="HouseholdMember" asp-action="Delete" asp-route-id="@member.PersonId"> Delete</a>
                                 </td>
                             </tr>
                         }

@@ -54,7 +54,8 @@ namespace HealthWebApp2._0.Data.Services
 
         public HouseholdProfile GetByPersonId(long PersonId)
         {
-            return _context.HouseholdProfile.HouseholdMembers.FirstOrDefault(hm => hm.PersonId == PersonId);
+            var hm = _context.HouseholdMember.FirstOrDefault(h => h.PersonId == PersonId);
+            return GetById(hm.HouseholdProfileId);
         }
 
         public HouseholdProfile GetByProfileId(string ProfileId)
