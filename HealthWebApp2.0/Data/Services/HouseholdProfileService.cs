@@ -37,6 +37,8 @@ namespace HealthWebApp2._0.Data.Services
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
+                .Include(c => c.Barangay.CityMunicipality)
+                .Include(p => p.Barangay.CityMunicipality.Province)
                 .Where(b => b.BarangayId == BarangayId);
         }
 
@@ -44,19 +46,23 @@ namespace HealthWebApp2._0.Data.Services
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
+                .Include(c => c.Barangay.CityMunicipality)
+                .Include(p => p.Barangay.CityMunicipality.Province)
                 .Include(m => m.HouseholdMembers)
                 .FirstOrDefault(hp => hp.Id == id);
         }
 
         public HouseholdProfile GetByPersonId(long PersonId)
         {
-            throw new NotImplementedException();
+            return _context.HouseholdProfile.HouseholdMembers.FirstOrDefault(hm => hm.PersonId == PersonId);
         }
 
         public HouseholdProfile GetByProfileId(string ProfileId)
         {
             return _context.HouseholdProfile
                 .Include(b => b.Barangay)
+                .Include(c => c.Barangay.CityMunicipality)
+                .Include(p => p.Barangay.CityMunicipality.Province)
                 .FirstOrDefault(hp => hp.ProfileId == ProfileId);
         }
 
