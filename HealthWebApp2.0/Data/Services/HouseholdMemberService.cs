@@ -51,6 +51,13 @@ namespace HealthWebApp2._0.Data.Services
                 //.ToList();
         }
 
+        public IEnumerable<HouseholdMember> GetAllById(long profileId)
+        {
+            return _context.HouseholdMember
+                        .Include(m => m.Person)
+                        .Where(p => p.HouseholdProfileId == profileId)
+         }
+
         public Person GetFather(long FatherId)
         {
             return _context.People.FirstOrDefault(p => p.Id == FatherId);

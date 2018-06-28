@@ -15,13 +15,15 @@ namespace HealthWebApp2._0.Controllers
     public class HouseholdController : Controller
     {
         private IHouseholdProfile _householdProfile;
+        private IHouseholdMember _householdMember;
         private IBarangay _barangay;
         private IProvince _province;
         private ICity _city;
 
-        public HouseholdController(IHouseholdProfile householdProfile, IProvince province, ICity city, IBarangay barangay)
+        public HouseholdController(IHouseholdProfile householdProfile, IHouseholdMember householdMember, IProvince province, ICity city, IBarangay barangay)
         {
             _householdProfile = householdProfile;
+            _householdMember = householdMember;
             _barangay = barangay;
             _province = province;
             _city = city;
@@ -91,6 +93,8 @@ namespace HealthWebApp2._0.Controllers
             if (household != null)
             {
                 var model = Mapper.Map<HouseholdProfile, HouseholdProfileDetailModel>(household);
+                var householdmembers = _householdMember.GetById(Id)
+                model.HouseholdMembers = householdmembers;
                 return View(model);
             }
             return RedirectToAction("Index", household);
