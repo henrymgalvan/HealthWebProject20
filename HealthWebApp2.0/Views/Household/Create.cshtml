@@ -8,7 +8,7 @@
 
 <h2>Create</h2>
 
-<form asp-controller="Household" asp-action="Create" method="post">
+<form asp-controller="Household" asp-action="Create" method="post" asp-anti-forgery="true"
     <div class="form-horizontal">
         <h4>Create New Household</h4>
         <hr />
@@ -32,7 +32,7 @@
                 <label asp-for="BarangayId" class="col-md-2 control-label">Barangay</label>
                 <div class="col-md-4">
                     <select asp-for="BarangayId" class="form-control" asp-items="@ViewBag.BarangayID" >
-                        <option value="">-- Select Barangay --</option>
+                        <option disabled selected value="">-- Select Barangay --</option>
                     </select>
                     <span asp-validation-for="BarangayId" class="text-danger" />
                 </div>
@@ -41,7 +41,7 @@
                 <label asp-for="CityId" class="col-md-2 control-label">City</label>
                 <div class="col-md-4">
                     <select asp-for="CityId" class="form-control" asp-items="@ViewBag.CityID" disabled>
-                        @*<option value="">-- Select City --</option>*@
+                        <option disabled value="">-- Select City --</option>
                     </select>
                     <span asp-validation-for="CityId" class="text-danger" />
                 </div>
@@ -50,7 +50,7 @@
                 <label asp-for="ProvinceId" class="col-md-2 control-label">Province</label>
                 <div class="col-md-4">
                     <select asp-for="ProvinceId" class="form-control" asp-items="@ViewBag.ProvinceID" disabled>
-                        @*<option value="">-- Select Province --</option>*@
+                        <option disabled value="">-- Select Province --</option>
                     </select>
                     <span asp-validation-for="ProvinceId" class="text-danger" />
                 </div>

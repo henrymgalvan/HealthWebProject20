@@ -66,6 +66,7 @@ namespace HealthWebApp2._0.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(HouseholdProfileCreateModel newHousehold)
         {
             try
@@ -86,7 +87,7 @@ namespace HealthWebApp2._0.Controllers
             }
             return View(newHousehold);
         }
-
+=-
         public IActionResult Details(long Id)
         {
             HouseholdProfile household = _householdProfile.GetById(Id);

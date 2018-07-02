@@ -58,6 +58,7 @@ namespace HealthWebApp2._0.Controllers
             return View(model);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Create(HouseholdMemberCreateModel newHouseholdMember)
         {
             try
