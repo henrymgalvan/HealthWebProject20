@@ -87,14 +87,15 @@ namespace HealthWebApp2._0.Controllers
             }
             return View(newHousehold);
         }
-=-
+
         public IActionResult Details(long Id)
         {
             HouseholdProfile household = _householdProfile.GetById(Id);
             if (household != null)
             {
                 var model = Mapper.Map<HouseholdProfile, HouseholdProfileDetailModel>(household);
-                var householdmembers = _householdMember.GetById(Id)
+                var householdmembers = _householdMember.GetAllByHouseholdProfileId(Id);
+                var householdmembersmodel = Mapper.Map<HouseholdMember, HouseholdMemberDetailModel>(householdmembers);
                 model.HouseholdMembers = householdmembers;
                 return View(model);
             }

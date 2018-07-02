@@ -10,7 +10,6 @@ namespace HealthWebApp2._0.Data.Interface
     public interface IHouseholdMember
     {
         IEnumerable<HouseholdMember> GetAll();
-        IEnumerable<HouseholdMember> GetAllById();
         IEnumerable<HouseholdMember> GetAllByHouseholdProfileId(long householdProfileId);
         HouseholdMember Get(long Id);
         Person GetMemberDetail(long PersonId);
