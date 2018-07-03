@@ -9,6 +9,7 @@ using HealthWebApp2._0.Models.HouseholdProfile;
 using Microsoft.AspNetCore.Mvc;
 using HealthWebApp2._0.Data.EntityModel.Barangays;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using HealthWebApp2._0.Models.HouseholdMember;
 
 namespace HealthWebApp2._0.Controllers
 {
@@ -95,8 +96,8 @@ namespace HealthWebApp2._0.Controllers
             {
                 var model = Mapper.Map<HouseholdProfile, HouseholdProfileDetailModel>(household);
                 var householdmembers = _householdMember.GetAllByHouseholdProfileId(Id);
-                var householdmembersmodel = Mapper.Map<HouseholdMember, HouseholdMemberDetailModel>(householdmembers);
-                model.HouseholdMembers = householdmembers;
+                var householdmembersmodel = Mapper.Map<IEnumerable<HouseholdMember>, IEnumerable<HouseholdMemberDetailModel>>(householdmembers);
+                model.HouseholdMembers = householdmembersmodel;
                 return View(model);
             }
             return RedirectToAction("Index", household);
