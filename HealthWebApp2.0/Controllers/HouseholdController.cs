@@ -95,8 +95,15 @@ namespace HealthWebApp2._0.Controllers
             {
                 var model = Mapper.Map<HouseholdProfile, HouseholdProfileDetailModel>(household);
                 var householdmembers = _householdMember.GetAllByHouseholdProfileId(Id);
-                var householdmembersmodel = Mapper.Map<HouseholdMember, HouseholdMemberDetailModel>(householdmembers);
-                model.HouseholdMembers = householdmembers;
+
+                IEnumerable<HouseholdMemberDetailModel> householdmembersmodel;
+                foreach (var hm in householdmembers)
+                {
+                    hmtemp = Mapper.Map<Householdmember, HouseholdMemberDetailModel>(hm);
+                    householdmembersmodel.Add(hmtemp);
+                }
+                //var householdmembersmodel = Mapper.Map<IEnumerable<HouseholdMember>, IEnumerable<HouseholdMemberDetailModel>>(householdmembers);
+                model.HouseholdMembers = householdmembersmodel;
                 return View(model);
             }
             return RedirectToAction("Index", household);
