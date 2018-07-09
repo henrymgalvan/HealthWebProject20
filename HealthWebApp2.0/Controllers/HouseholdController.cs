@@ -9,6 +9,7 @@ using HealthWebApp2._0.Models.HouseholdProfile;
 using Microsoft.AspNetCore.Mvc;
 using HealthWebApp2._0.Data.EntityModel.Barangays;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using HealthWebApp2._0.Models.HouseholdMember;
 
 namespace HealthWebApp2._0.Controllers
 {
